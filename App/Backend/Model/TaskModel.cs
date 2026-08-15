@@ -1,18 +1,11 @@
-namespace Model;
-
-public enum TaskStatus 
-{
-    Open,
-    InProgress,
-    Closed
-}
+namespace Chronity.App.Backend.Model;
 
 // Models are basically a "custom" Datatype, for example the Tasks that we are going to create will
 // use this Model as its Datatype, therefore it will need a TaskName, TaskDesc, etc.
 
 // A Model is just a class that declares what structure certain Data will have. 
 // The world Model is not a Keyword in C#, but rather Convention in C#. 
-public class Task
+public class TaskModel
 {
     // get; = Getter
     // Allows other code to READ the value of this variable, if theres no Getters, but it is public. 
@@ -31,4 +24,13 @@ public class Task
     public string TaskName { get; set;}
     public string TaskDesc { get; set;}
     public TaskStatus Status { get; set;}
+
+    public void PrintTask()
+    {
+        if (this.Status == TaskStatus.Open)
+        {
+            this.Status = TaskStatus.InProgress;
+        }
+        Console.Write($"Task: \n {this.TaskName} \n {this.TaskDesc} \n {this.Status}");
+    }
 }

@@ -6,3 +6,7 @@ obj/
 .vs/
 *.user
 *.suo
+
+# Environment Variables
+.env
+/secrets

@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:alpine3.24
+    container_name: Chronity
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${CN_DB_NAME}
+      POSTGRES_USER: ${CN_DB_USER}
+      POSTGRES_PASSWORD_FILE: /run/secrets/cn_db_password
+    ports:
+      - ${CN_DB_PORT}:5432
+    secrets:
+      - cn_db_password
+    volumes:
+      - cn_postgres_data:/var/lib/postgresql/data
+
+secrets:
+  cn_db_password:
+    file: ./secrets/cn_db_password.txt
+
+volumes:
+  cn_postgres_data:
