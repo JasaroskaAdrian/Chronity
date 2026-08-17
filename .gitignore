@@ -10,3 +10,4 @@ obj/
 # Environment Variables
 .env
 /secrets
+package-lock.json
